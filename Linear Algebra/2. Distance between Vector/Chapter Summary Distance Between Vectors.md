@@ -6,7 +6,7 @@ If we multiply all the components, and then add up the obtained values, we obtai
 
 Here's the formula for a scalar product of two vectors 𝑎=[𝑥1, 𝑥2… 𝑥𝑛] and 𝑏=[𝑦1, 𝑦2… 𝑦𝑛]:
 
-![https://github.com/chuksoo/Practicum-Yandex/blob/main/Linear%20Algebra/2.%20Distance%20between%20Vector/ab.jpg](Chapter%20Summary%20Distance%20Between%20Vectors%2031e7aa9e3cda45a9b3f3811e538feab3/ab.jpg)
+![https://github.com/chuksoo/Practicum-Yandex/blob/main/Linear%20Algebra/2.%20Distance%20between%20Vector/Images/ab.jpg](Chapter%20Summary%20Distance%20Between%20Vectors%2031e7aa9e3cda45a9b3f3811e538feab3/ab.jpg)
 
 The scalar product of vectors *a* and *b* is usually denoted by parentheses (𝑎, 𝑏) or a dot 𝑎⋅𝑏.
 
