@@ -15,8 +15,8 @@ def load_train(path):
 
 def create_model(input_shape):
     model = Sequential()
-    model.add(Dense(100, input_shape=input_shape, activation='relu'))  # first hidden layer with 10 neutrons
-    model.add(Dense(100, activation='softmax'))  # second hidden layer with 10 neutrons
+    model.add(Dense(100, input_shape=input_shape, activation='relu'))  # first hidden layer with 100 neutrons
+    model.add(Dense(100, activation='softmax'))  # second hidden layer with 100 neutrons
     # model.add(Dense(10, activation='softmax'))  # third hidden layer with 5 neutrons
     model.compile(
         optimizer='sgd',
