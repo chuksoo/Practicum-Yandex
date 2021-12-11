@@ -1,9 +1,9 @@
 import numpy as np
+from tensorflow.keras.applications.resnet import ResNet50
+from tensorflow.keras.layers import GlobalAveragePooling2D, Dense
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, Flatten, Dense, AveragePooling2D
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
-
 
 def load_train(path):
     datagen = ImageDataGenerator(
@@ -21,20 +21,15 @@ def load_train(path):
 
 def create_model(input_shape):
 
-    model = Sequential()
-
-    model.add(
-        Conv2D(
-            filters=6,
-            kernel_size=(3, 3),
-            activation='relu',
-            input_shape=(150, 150, 3),
-        )
+    backbone = ResNet50(
+        input_shape=(150, 150, 3), weights='imagenet', include_top=False
     )
-    model.add(AveragePooling2D(pool_size=(2, 2)))
-    model.add(Flatten())
-    model.add(Dense(64, activation='relu'))
+
+    model = Sequential()
+    model.add(backbone)
+    model.add(GlobalAveragePooling2D())
     model.add(Dense(12, activation='softmax'))
+    
     optimizer = Adam(lr=0.001)
     model.compile(optimizer=optimizer,
                   loss='sparse_categorical_crossentropy', metrics=['acc']
@@ -48,7 +43,7 @@ def train_model(
     train_data,
     test_data,
     batch_size=None,
-    epochs=10,
+    epochs=3,
     steps_per_epoch=None,
     validation_steps=None,
 ):
@@ -56,7 +51,7 @@ def train_model(
     model.fit(
         train_data,
         validation_data=test_data,
-        epochs=epochs,
+        epochs=10,
         verbose=2,
         #steps_per_epoch=7,
         batch_size=batch_size,
@@ -65,5 +60,3 @@ def train_model(
     )
 
     return model
-
-
